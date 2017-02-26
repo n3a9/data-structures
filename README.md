@@ -1,7 +1,4 @@
-![java badge](https://img.shields.io/badge/java-tested-brightgreen.svg)
-![javascript badge](https://img.shields.io/badge/javascript-untested-orange.svg)
-
-# Data Structures Walkthrough
+# Data Structures Walkthrough ![java badge](https://img.shields.io/badge/java-tested-brightgreen.svg)
 
 A full implementation of data structures in both Java and Javascript, along with tutorials.
 
@@ -23,13 +20,14 @@ A full implementation of data structures in both Java and Javascript, along with
 - [x] Node
 - [x] DoubleNode
 - [x] Singly Linked List
-- [ ] Doubly Linked List
+- [x] Doubly Linked List
 - [ ] Binary Search Tree (in progress)
 - [ ] Map
 - [x] Stack
 - [x] Queue
 
 ## Contribute
+
 1. **Fork and clone repository**: Fork and clone the repository to your own profile.
 
     To Fork: (Option 1) Click the fork button on the top right hand corner. This will create a copy of the repository in your own profile.
@@ -48,4 +46,5 @@ A full implementation of data structures in both Java and Javascript, along with
     ![pullrequest](https://cloud.githubusercontent.com/assets/7104017/12533289/70798ff4-c1e8-11e5-8c6b-c5916de487ee.png)
 
 ## Troubleshooting/Contact
+
 If having issues, contact aggarwal.neeraj141@gmail.com for help.
