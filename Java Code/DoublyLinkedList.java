@@ -10,6 +10,21 @@ public class DoublyLinkedList<E> {
     private DoubleNode end;
     private int size;
 
+    /**
+     * Constructor for the Doubly Linked List. Sets head and end to null, and
+     * size to 0.
+     */
+    public DoublyLinkedList() {
+        this.head = null;
+        this.end = null;
+        this.size = 0;
+    }
+
+    /**
+     * Returns a string representation of the DoublyLinkedList.
+     *
+     * @return: a string containing the values in the list.
+     */
     public String toString()
     {
         DoubleNode node = head;
@@ -22,16 +37,6 @@ public class DoublyLinkedList<E> {
             node = node.getNext();
         }
         return s + node.getValue() + "]";
-    }
-
-    /**
-     * Constructor for the Doubly Linked List. Sets head and end to null, and
-     * size to 0.
-     */
-    public DoublyLinkedList() {
-        this.head = null;
-        this.end = null;
-        this.size = 0;
     }
 
     /**
@@ -319,7 +324,7 @@ public class DoublyLinkedList<E> {
         }
 
         /**
-         * Will return the next value to point to in the list. Will check if the list has been modified
+         * Will return the next value pointed to in the list. Will check if the list has been modified
          * by checking if the size of the list has changed. First confirms that there is another value
          * in the list by only continuing if hasNext() is true.
          *
