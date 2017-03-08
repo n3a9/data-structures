@@ -7,7 +7,8 @@ A full implementation of data structures in both Java and Javascript, along with
 ### Java Implementations
 
 - [x] Node
-- [x] DoubleNode
+- [x] Double Node
+- [x] Array List
 - [x] Singly Linked List
 - [x] Doubly Linked List
 - [ ] Binary Search Tree
