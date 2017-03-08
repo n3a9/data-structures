@@ -232,6 +232,5 @@ public class ArrayList<E>
         {
             ArrayList.this.remove(nextIndex);
         }
-
     }
 }
