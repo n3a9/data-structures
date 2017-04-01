@@ -202,9 +202,7 @@ public class ArrayList<E>
         public boolean hasNext()
         {
             if(nextIndex< ArrayList.this.size()-1)
-            {
                 return true;
-            }
             return false;
         }
 
@@ -217,9 +215,8 @@ public class ArrayList<E>
         public E next()
         {
             nextIndex++;
-            if (hasNext()) {
+            if (hasNext()
                 return (E) (values[nextIndex - 1]);
-            }
             return null;
         }
 

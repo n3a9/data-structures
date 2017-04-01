@@ -3,7 +3,8 @@ import java.util.*;
 /**
  * Tester for DoublyLinkedList
  */
-public class SinglyLinkedListTester {
+public class SinglyLinkedListTester
+{
 
     /**
      * Main method in the Tester to run. Does not test iterator yet.
@@ -33,9 +34,8 @@ public class SinglyLinkedListTester {
             System.out.print("Test get function at 3rd index\n");
             System.out.print("Base list value at 3rd index: " + base.get(2) + "\n");
             System.out.print("Your list value at 3rd index: " + test.get(2) + "\n");
-            if (test.get(2) != base.get(2)) {
+            if (test.get(2) != base.get(2))
                 throw new RuntimeException("Get function doesn't work.");
-            }
 
             //remove the value at the 4th index
             System.out.print("\nRemoving the 4th value in list, " + base.get(3)+ "\n");

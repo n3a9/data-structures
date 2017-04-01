@@ -3,7 +3,8 @@ import java.util.*;
 /**
  * Tester for DoublyLinkedList
  */
-public class DoublyLinkedListTester {
+public class DoublyLinkedListTester
+{
 
     /**
      * Main method in the Tester to run. Does not test iterator yet.
@@ -33,18 +34,16 @@ public class DoublyLinkedListTester {
             System.out.print("Test get function at 3rd index\n");
             System.out.print("Base list value at 3rd index: " + base.get(2) + "\n");
             System.out.print("Your list value at 3rd index: " + test.get(2) + "\n");
-            if (test.get(2) != base.get(2)) {
+            if (test.get(2) != base.get(2))
                 throw new RuntimeException("Get function doesn't work.");
-            }
 
             //add a value at the 3rd index
             int randomInt = random(i);
             System.out.print("\nAdding " + randomInt + " to list at 3rd index.\n");
             test.add(2, randomInt);
             base.add(2, randomInt);
-            if (test.get(2) != randomInt) {
+            if (test.get(2) != randomInt)
                 throw new RuntimeException("Add at index function doesn't work.");
-            }
             tester(test, base);
 
             //remove the value at the 4th index

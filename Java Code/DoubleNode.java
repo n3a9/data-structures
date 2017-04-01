@@ -3,7 +3,8 @@
  * a value, and points to two other nodes.
  */
 
-public class DoubleNode {
+public class DoubleNode
+{
 
     private Object value;
     private DoubleNode previous;
@@ -13,9 +14,10 @@ public class DoubleNode {
      * Constructor for DoubleNode. Takes in a value to be stored,
      * and sets previous and next pointers to null.
      *
-     * @param value: the value to be assigned.
+     * @param val: the value to be assigned.
      */
-    public DoubleNode(Object value) {
+    public DoubleNode(Object val)
+    {
         this.value = val;
         previous = null;
         next = null;
@@ -26,7 +28,8 @@ public class DoubleNode {
      *
      * @return the value of the node.
      */
-    public Object getValue() {
+    public Object getValue()
+    {
         return this.value;
     }
 
@@ -35,7 +38,8 @@ public class DoubleNode {
      *
      * @return the node being pointed to by self in front.
      */
-    public DoubleNode getNext() {
+    public DoubleNode getNext()
+    {
         return this.next;
     }
 
@@ -44,7 +48,8 @@ public class DoubleNode {
      *
      * @return the node being pointed to by self behind.
      */
-    public DoubleNode getPrevious() {
+    public DoubleNode getPrevious()
+    {
         return this.previous;
     }
 
@@ -55,7 +60,8 @@ public class DoubleNode {
      * @param newValue: the new value to be carried by the node.
      * @return the old value of the node, and null if there is none.
      */
-    public Object setValue(Object newValue) {
+    public Object setValue(Object newValue)
+    {
         Object oldValue = this.value;
         this.value = newValue;
         return oldValue;
@@ -67,7 +73,8 @@ public class DoubleNode {
      * @param newNext: the new node to be pointed to
      * @return the old next, and null if there was no value.
      */
-    public DoubleNode setNext(DoubleNode newNext) {
+    public DoubleNode setNext(DoubleNode newNext)
+    {
         DoubleNode oldNext = this.next;
         this.next = newNext;
         return oldNext;
@@ -79,7 +86,8 @@ public class DoubleNode {
      * @param newPrevious: the new node to be pointed from
      * @return the old previous, and null if there was no value.
      */
-    public DoubleNode setPrevious(DoubleNode newPrevious) {
+    public DoubleNode setPrevious(DoubleNode newPrevious)
+    {
         DoubleNode oldPrevious = this.previous;
         this.previous = newPrevious;
         return oldPrevious;

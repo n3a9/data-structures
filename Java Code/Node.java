@@ -3,7 +3,8 @@
  * a value, and points to two other nodes.
  */
 
-public class Node {
+public class Node
+{
 
     private Object value;
     private Node next;
@@ -12,9 +13,10 @@ public class Node {
      * Constructor for Node. Takes in a value to be stored,
      * and sets previous and next pointers to null.
      *
-     * @param value: the value to be assigned.
+     * @param val: the value to be stored.
      */
-    public Node(Object value) {
+    public Node(Object val)
+    {
         this.value = val;
         next = null;
     }
@@ -24,7 +26,8 @@ public class Node {
      *
      * @return the value of the node.
      */
-    public Object getValue() {
+    public Object getValue()
+    {
         return this.value;
     }
 
@@ -34,7 +37,8 @@ public class Node {
      * @return: true if next points to a node, and false if
      * next is null.
      */
-    public boolean hasNext() {
+    public boolean hasNext()
+    {
         return (next != null);
     }
 
@@ -43,7 +47,8 @@ public class Node {
      *
      * @return the node being pointed to by self in front.
      */
-    public Node getNext() {
+    public Node getNext()
+    {
         return this.next;
     }
 
@@ -53,7 +58,8 @@ public class Node {
      * @param newValue: the new value to be carried by the node.
      * @return the old value of the node, and null if there is none.
      */
-    public Object setValue(Object newValue) {
+    public Object setValue(Object newValue)
+    {
         Object oldValue = this.value;
         this.value = newValue;
         return oldValue;
@@ -65,7 +71,8 @@ public class Node {
      * @param newNext: the new node to be pointed to
      * @return the old next, and null if there was no value.
      */
-    public Node setNext(Node newNext) {
+    public Node setNext(Node newNext)
+    {
         Node oldNext = this.next;
         this.next = newNext;
         return oldNext;

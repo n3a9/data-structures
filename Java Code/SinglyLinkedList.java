@@ -2,7 +2,8 @@
  * Implementation of a Singly Linked List in Java.
  * Has a head node, as well as a size variable.
  */
-public class SinglyLinkedList<E> {
+public class SinglyLinkedList<E>
+{
 
     private Node head;
     private int size;
@@ -25,7 +26,8 @@ public class SinglyLinkedList<E> {
      * Constructor without parameters, which sets head
      * node to null and size to 0.
      */
-    public SinglyLinkedList() {
+    public SinglyLinkedList()
+    {
         this.head = null;
         this.size = 0;
     }
@@ -36,7 +38,8 @@ public class SinglyLinkedList<E> {
      *
      * @param h: the head value for the linked list.
      */
-    public SinglyLinkedList(Node h) {
+    public SinglyLinkedList(Node h)
+    {
         this.head = h;
         this.size = 1;
     }
@@ -48,13 +51,18 @@ public class SinglyLinkedList<E> {
      *
      * @param value: the data to add to the list.
      */
-    public void add(E value) {
+    public void add(E value)
+    {
         Node add = new Node(value);
-        if (this.head == null) {
+        if (this.head == null)
+        {
             this.head = add;
-        } else {
+        }
+        else
+        {
             Node temp = this.head;
-            while (temp.hasNext()) {
+            while (temp.hasNext())
+            {
                 temp = temp.getNext();
             }
             temp.setNext(add);
@@ -72,14 +80,13 @@ public class SinglyLinkedList<E> {
     * @return: the node at the given position in the list, or null
     * if it doesn't exist.
     */
-    public Node getNode(int index) {
+    public Node getNode(int index)
+    {
         Node temp = this.head;
-        if (this.head == null || index >= this.size) {
+        if (this.head == null || index >= this.size)
             return null;
-        }
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index; i++)
             temp = temp.getNext();
-        }
         return temp;
     }
 
@@ -93,11 +100,11 @@ public class SinglyLinkedList<E> {
     * @return: the respective value in the list, or null if the position
     * doesn't exist.
     */
-    public E get(int index) {
+    public E get(int index)
+    {
         Node node = getNode(index);
-        if (node == null) {
+        if (node == null)
             return null;
-        }
         return (E) node.getValue();
     }
 
@@ -109,7 +116,8 @@ public class SinglyLinkedList<E> {
     * @param newValue: the new value to replace the old value
     * @return: the old value in the position.
     */
-    public E set(int index, E newValue) {
+    public E set(int index, E newValue)
+    {
         E oldValue = get(index);
         getNode(index).setValue(newValue);
         return oldValue;
@@ -129,13 +137,19 @@ public class SinglyLinkedList<E> {
      * @param index: the index of the value being removed
      * @return: the old value at that index
      */
-    public E remove(int index) {
+    public E remove(int index)
+    {
         E oldValue = get(index);
-        if (index == 0) {
+        if (index == 0)
+        {
             this.head = this.head.getNext();
-        } else if (index == this.size -1) {
+        }
+        else if (index == this.size -1)
+        {
             getNode(index-1).setNext(null);
-        } else {
+        }
+        else
+        {
             getNode(index-1).setNext(getNode(index+1));
         }
         this.size--;
@@ -147,7 +161,8 @@ public class SinglyLinkedList<E> {
      *
      * @return: the size of the linked list.
      */
-    public int size() {
+    public int size()
+    {
         return this.size;
     }
 }
