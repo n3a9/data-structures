@@ -23,8 +23,8 @@ In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-1378
 - [x] Doubly Linked List
 - [x] Tree Node
 - [x] Map Entry
-- [ ] Binary Search Tree (in progress)
-- [ ] TreeMap (in progress)
+- [x] Binary Search Tree Utilities
+- [x] TreeMap
 - [ ] Stack
 - [ ] Queue
 
