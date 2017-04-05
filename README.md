@@ -2,7 +2,7 @@
 
 A full implementation of data structures in both Java and Javascript, along with tutorials.
 
-Often, people neglect the foundations of data structures and algorithms, and instead focus on utilizing them in problem solving. However,  understanding how structure works on the inside can be extremely helpful in being able to apply them in real solutions.
+Often, people neglect the foundations of data structures and algorithms, and instead focus on utilizing them in problem solving. However, understanding how structure works on the inside can be extremely helpful in being able to apply them in real solutions.
 
 In this project, there will be full walkthroughs of each type of data structure, with full implementations of them in different languages.
 
@@ -24,7 +24,10 @@ In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-1378
 - [x] Tree Node
 - [x] Map Entry
 - [x] Binary Search Tree Utilities
-- [x] TreeMap
+- [x] Tree Map
+- [ ] Tree Set
+- [ ] Hash Set
+- [ ] Heap Utilities
 - [ ] Stack
 - [ ] Queue
 
