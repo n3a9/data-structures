@@ -31,7 +31,7 @@ public class DoublyLinkedListTester {
       System.out.print("Test get function at 3rd index\n");
       System.out.print("Base list value at 3rd index: " + base.get(2) + "\n");
       System.out.print("Your list value at 3rd index: " + test.get(2) + "\n");
-      if (test.get(2).equals(base.get(2))) {
+      if (!test.get(2).equals(base.get(2))) {
         throw new RuntimeException("Get function doesn't work.");
       }
 
