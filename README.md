@@ -12,7 +12,7 @@ In this project, there will be full walkthroughs of each type of data structure,
 
 The code follows the [Google Java Style Guide](http://checkstyle.sourceforge.net/reports/google-java-style-20170228.html#s7.3-javadoc-where-required), with the XML checkstyle file found [here](https://github.com/checkstyle/checkstyle/blob/master/src/main/resources/google_checks.xml).
 
-In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-137868.html), the code includes @precondition and @postconditions tags for extra clarity and definition of methods, although not officially supported by Javadoc. @precondition and @postcondition both are in front of @param in terms of order, respectively.
+In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-137868.html), the code includes `@precondition`, `@postconditions`, and `@param` tags for extra clarity and definition of methods, although not officially supported by Javadoc. `@precondition` and `@postconditions` both are in front of `@param` in terms of order, respectively.
 
 ### Current Data Structures
 
