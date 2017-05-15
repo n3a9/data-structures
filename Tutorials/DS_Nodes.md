@@ -12,7 +12,7 @@ As stated above, a node only has two attributes – the data value and the node 
 
 To begin, lets define the node constructor. It only has the data, and the node that it points to. Remember that a node must be initialized with the data it will carry.
 
-Java
+### Java
 ```java
 public class Node {
 
@@ -25,7 +25,7 @@ public class Node {
   }
 ```
 
-Javascript
+### Javascript
 ```javascript
 function Node(value) {
 	this.value = value;
@@ -35,14 +35,14 @@ function Node(value) {
 
 Now, to retrieve the value, we will create a `getValue()` method that returns the method of the variable.
 
-Java
+### Java
 ```java
 public Object getValue() {
   return this.value;
 }
 ```
 
-JavaScript
+### JavaScript
 ```javascript
 Node.prototype.getValue(){
 	return this.value;
@@ -51,7 +51,7 @@ Node.prototype.getValue(){
 
 Next, we have to manipulate the node. We will check if there is a node pointed to with `hasNext()`. If there is a node stored, then `getNext()` will return the node. Otherwise, it will return null.
 
-Java
+### Java
 ```java
 public boolean hasNext() {
   return (next != null);
@@ -62,7 +62,7 @@ public Node getNext() {
 }
 ```
 
-Javascript
+### Javascript
 ```javascript
 Node.prototype.hasNext() {
   return (!this.next==null);
@@ -79,7 +79,7 @@ Node.prototype.getNext() {
 
 To change the stored value, we will create a `setValue()` method to change the value of the data. This, however, will also return the old value of the node. We are returning the old values for better usability.
 
-Java
+### Java
 ```java
 public Object setValue(Object newValue) {
   Object oldValue = this.value;
@@ -88,7 +88,7 @@ public Object setValue(Object newValue) {
 }
 ```
 
-Javascript
+### Javascript
 ```javascript
 Node.prototype.setValue(newValue){
 	var oldValue = this.value;
@@ -99,7 +99,7 @@ Node.prototype.setValue(newValue){
 
 To change the node being stored, we used `setNext()`, which will return the old node being stored.
 
-Java
+### Java
 ```java
 public Node setNext(Node newNext) {
   Node oldNext = this.next;
@@ -108,7 +108,7 @@ public Node setNext(Node newNext) {
 }
 ```
 
-Javascript
+### Javascript
 ```javascript
 Node.prototype.setNext(newNext) {
   var oldNext = this.next;
