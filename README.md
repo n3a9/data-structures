@@ -27,7 +27,7 @@ In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-1378
 - [x] Tree Map
 - [ ] Tree Set
 - [x] Hash Set
-- [ ] Rectangle (class for testing Hash Set)
+- [x] Rectangle (class for testing Hash Set)
 - [ ] Heap Utilities
 - [ ] Stack
 - [ ] Queue

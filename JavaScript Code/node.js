@@ -20,19 +20,6 @@ Node.prototype.getValue(){
 }
 
 /*
-* Will change the value of the node and return the
-* old value.
-*
-* @param {Object} newValue: the new value to be carried by the node.
-* @return the old value of the node.
-*/
-Node.prototype.setValue(newValue){
-	var oldValue = this.value;
-	this.value = newValue;
-	return oldValue;
-}
-
-/*
 * Will return if the node points to another node.
 *
 * @return true if it points to another node and false if not.
@@ -49,11 +36,23 @@ Node.prototype.hasNext(){
 */
 Node.prototype.getNext(){
 	var n = null;
-	if (this.hasNext())
-	{
+	if (this.hasNext()) {
 		n = this.next;
 	}
 	return n;
+}
+
+/*
+* Will change the value of the node and return the
+* old value.
+*
+* @param {Object} newValue: the new value to be carried by the node.
+* @return the old value of the node.
+*/
+Node.prototype.setValue(newValue){
+	var oldValue = this.value;
+	this.value = newValue;
+	return oldValue;
 }
 
 /*
