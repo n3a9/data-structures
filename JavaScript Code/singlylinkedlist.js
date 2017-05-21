@@ -18,13 +18,11 @@ function SinglyLinkedList() {
 */
 SinglyLinkedList.prototype.add(value) {
 	var node = new Node(value);
-	if (this.head == null)
-	{
+	if (this.head == null) {
 		head = node;
 	} else {
 		var temp = this.head;
-		while (temp.hasNext())
-		{
+		while (temp.hasNext()) {
 			temp = temp.getNext();
 		}
 		temp.setNext(node);
@@ -44,12 +42,10 @@ SinglyLinkedList.prototype.add(value) {
 */
 SinglyLinkedList.prototype.getNode(index) {
 	var node = this.head;
-	if (this.head==null || position >= this.size)
-	{
+	if (this.head == null || position >= this.size) {
 		return null;
 	}
-	for (int i = 0; i < index; i++)
-	{
+	for (int i = 0; i < index; i++) {
 		node = node.getNext();
 	}
 	return node;
@@ -67,8 +63,7 @@ SinglyLinkedList.prototype.getNode(index) {
 */
 SinglyLinkedList.prototype.get(index) {
 	var node = getNode(index);
-	if (node == null)
-	{
+	if (node == null) {
 		return null;
 	} else {
 		return node.getValue();
@@ -104,16 +99,11 @@ SinglyLinkedList.prototype.set(index, value) {
 */
 SinglyLinkedList.prototype.remove(index) {
 	var oldValue = get(index);
-	if (index == 0) //first node
-	{
+	if (index == 0) { //first node
 		this.head = this.head.getNext();
-	}
-	else if (index == this.size -1) //last node
-	{
+	} else if (index == this.size -1) { //last node
 		getNode(index-1).setNext(null);
-	}
-	else
-	{
+	} else {
 		getNode(index-1).setNext(getNode(index+1));
 	}
 	this.size--;
