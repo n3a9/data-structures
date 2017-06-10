@@ -40,7 +40,9 @@ In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-1378
 - [x] DoubleNode
 - [x] Singly Linked List
 - [x] Doubly Linked List
+- [x] Tree Node
 - [x] Map Entry
-- [ ] Map
+- [x] Binary Search Tree Utilities
+- [ ] Tree Map
 - [x] Stack
 - [x] Queue
