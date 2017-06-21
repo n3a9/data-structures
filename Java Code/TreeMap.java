@@ -56,7 +56,7 @@ public class TreeMap<K,V> {
       oldValue = null;
       MapEntry entry = new MapEntry(key, value);
       this.root = BinarySearchTreeUtilities.insert(root, entry);
-      size++;
+      this.size++;
     } else {
       oldValue = foundEntry.getValue();
       foundEntry.setValue(value);
@@ -93,7 +93,7 @@ public class TreeMap<K,V> {
     } else {
       oldValue = foundEntry.getValue();
       this.root = BinarySearchTreeUtilities.delete(root, foundEntry);
-      size--;
+      this.size--;
     }
     return oldValue;
   }
