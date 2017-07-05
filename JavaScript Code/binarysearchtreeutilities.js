@@ -10,7 +10,8 @@
  *   insert: inserts the value in the correct space in the tree given that it is not a duplicate
  *   delete: deletes a value from the tree
  */
-function BinarySearchTreeUtilities() {}
+function BinarySearchTreeUtilities() {
+}
 
 /*
  * findNode recursively goes through the BST to find the tree node with the given value x.
@@ -25,19 +26,19 @@ function BinarySearchTreeUtilities() {}
  * @param x the value to be searched for in the tree
  * @return the node containing x, or null if the value is not in the tree
  */
-BinarySearchTreeUtilities.prototype.findNode(t, x) {
-  if (t == null) {
+BinarySearchTreeUtilities.findNode = function(t, x) {
+  if (t === null) {
     return null;
   }
   var compare = x.compareTo(t.getValue());
-  if (compare == 0) {
+  if (compare === 0) {
     return t;
   } else if (compare > 0) {
     return findNode(t.getRight(), x);
   } else {
     return findNode(t.getLeft(), x);
   }
-}
+};
 
 /*
  * Uses the findNode(t, x) method to determine whether x is in the tree by checking
@@ -47,9 +48,9 @@ BinarySearchTreeUtilities.prototype.findNode(t, x) {
  * @param x the value to be searched for in the tree
  * @return false if findNode returns null, otherwise true
  */
-BinarySearchTreeUtilities.prototype.contains(t, x) {
-  return (findNode(t, x) != null);
-}
+BinarySearchTreeUtilities.contains = function(t, x) {
+  return (findNode(t, x) !== null);
+};
 
 /*
  * If x is not already present in the tree, then it adds it into the correct place to
@@ -59,36 +60,36 @@ BinarySearchTreeUtilities.prototype.contains(t, x) {
  * @param x the value to be added to the tree
  * @return the tree with the value x in the correct position if it not present already
  */
-BinarySearchTreeUtilities.prototype.insert(t, x) {
+BinarySearchTreeUtilities.insert = function(t, x) {
   if (!contains(t, x)) {
     var newNode = new TreeNode(x);
-    if (t == null) {
+    if (t === null) {
       t = newNode;
     } else {
       var compare = x.compareTo(t.getValue());
       // x is less than the current node value
       if (compare < 0) {
-        if (t.getLeft() == null) {
+        if (t.getLeft() === null) {
           // Base case: no node to the left of current, so set the newNode as the new left one
           t.setLeft(newNode);
         } else {
           // Recursive case: node to the left of current, so call recursive function on left node
-          insert(t.getLeft(), x);
+          this.insert(t.getLeft(), x);
         }
         // x is greater than the current node value
       } else if (compare > 0) {
-        if (t.getRight() == null) {
+        if (t.getRight() === null) {
           // Base case: no node to the right of current, so set the newNode as the new right one
           t.setRight(newNode);
         } else {
           // Recursive case: node to the right of current, so call recursive function on right node
-          insert(t.getRight(), x);
+          this.insert(t.getRight(), x);
         }
       }
     }
   }
   return t;
-}
+};
 
 /*
  * A helper method for delete(t, x) that will delete the current node from the given tree
@@ -104,13 +105,13 @@ BinarySearchTreeUtilities.prototype.insert(t, x) {
  * @param t the node that will be deleted from the tree
  * @return a pointer to the resulting tree once the root has been removed
  */
-BinarySearchTreeUtilities.prototype.deleteNode(t) {
+BinarySearchTreeUtilities.deleteNode = function(t) {
   var successor;
-  if (t.getRight() == null) {
+  if (t.getRight() === null) {
     // Case 1: No successor
     successor = null;
     t = t.getLeft();
-  } else if (t.getRight().getLeft() == null) {
+  } else if (t.getRight().getLeft() === null) {
     // Case 2: Successor is right child
     successor = t.getRight();
     t.setValue(successor.getValue());
@@ -119,7 +120,7 @@ BinarySearchTreeUtilities.prototype.deleteNode(t) {
     // Case 3: Successor is not right child
     successor = t.getRight();
     var previous = t;
-    while (successor.getLeft() != null) {
+    while (successor.getLeft() !== null) {
       previous = successor;
       successor = successor.getLeft();
     }
@@ -127,7 +128,7 @@ BinarySearchTreeUtilities.prototype.deleteNode(t) {
     previous.setLeft(successor.getRight());
   }
   return t;
-}
+};
 
 /*
  * A method to find the node in the tree that contains the value x, and calls deleteNode(t) to
@@ -139,20 +140,20 @@ BinarySearchTreeUtilities.prototype.deleteNode(t) {
  *         if the tree did not contain x: returns the previous tree
  *         else returns the BST with the TreeNode at x removed
  */
-BinarySearchTreeUtilities.prototype.delete(t, x) {
-  if (t == null) {
+BinarySearchTreeUtilities.delete = function(t, x) {
+  if (t === null) {
     return null;
   }
   var compare = x.compareTo(t.getValue());
-  if (compare == 0) {
+  if (compare === 0) {
     // Base case
     return deleteNode(t);
   } else if (compare < 0) {
     // Recursive case
-    t.setLeft(delete(t.getLeft(),x));
+    t.setLeft(delete(t.getLeft(), x));
   } else {
     // Recursive case
     t.setRight(delete(t.getRight(), x));
   }
   return t;
-}
+};

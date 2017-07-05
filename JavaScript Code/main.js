@@ -1,6 +1,6 @@
 /*
-* Tester file for data structure classes and algorithms.
-*/
+ * Tester file for data structure classes and algorithms.
+ */
 
 //node tester section
 //doublenode tester section
