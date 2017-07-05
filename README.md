@@ -32,7 +32,7 @@ In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-1378
 - [ ] Stack
 - [ ] Queue
 
-## Javascript
+## Javascript ![codestyle badge](https://img.shields.io/badge/codestyle-google-blue.svg)
 
 ### Current Data Structures
 
