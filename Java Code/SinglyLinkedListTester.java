@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 
 /**
- * Tester for DoublyLinkedList.
+ * Tester for SinglyLinkedList.
  */
 public class SinglyLinkedListTester {
 
@@ -14,8 +14,8 @@ public class SinglyLinkedListTester {
 
     for (int i = 0; i < 10; i++) { // 10 test runs
       System.out.print("\n\nNEW RUN\n\n");
-      test = new SinglyLinkedList<>(); // DoublyLinkedList that will be tested
-      base = new LinkedList<>(); // Base list to verify the doublylinkedlist functionality
+      test = new SinglyLinkedList<>(); // SinglyLinkedList that will be tested
+      base = new LinkedList<>(); // Base list to verify the SinglyLinkedList functionality
 
       // Add 6 values to each list
       for (int j = 1; j < 7; j++) {

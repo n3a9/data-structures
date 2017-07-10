@@ -6,7 +6,7 @@ Often, people neglect the foundations of data structures and algorithms, and ins
 
 In this project, there will be full walkthroughs of each type of data structure, with full implementations of them in different languages.
 
-## Java ![java badge](https://img.shields.io/badge/java-tested-brightgreen.svg) ![codestyle badge](https://img.shields.io/badge/codestyle-google-blue.svg)
+## Java ![java-tested badge](https://img.shields.io/badge/java-tested-brightgreen.svg) ![codestyle badge](https://img.shields.io/badge/codestyle-google-blue.svg)
 
 ### Code Style
 
@@ -43,6 +43,9 @@ In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-1378
 - [x] Tree Node
 - [x] Map Entry
 - [x] Binary Search Tree Utilities
-- [ ] Tree Map
+- [x] Tree Map
+- [ ] Tree Set
+- [ ] Hash Set
+- [ ] Rectangle (class for testing Hash Set)
 - [x] Stack
 - [x] Queue
