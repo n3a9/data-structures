@@ -1,3 +1,77 @@
+// Node Implementation
+
+/*
+ * Implementation of a node in Javascript. Carries
+ * a value element, and points to another node.
+ *
+ * @constructor
+ * @param {Object} value: the value element to be stored.
+ */
+function Node(value) {
+  this.value = value;
+  this.next = null;
+}
+
+/*
+ * Will return the value of the node.
+ *
+ * @return the value the node carries.
+ */
+Node.prototype.getValue = function() {
+  return this.value;
+};
+
+/*
+ * Will return if the node points to another node.
+ *
+ * @return true if it points to another node and false if not.
+ */
+Node.prototype.hasNext = function() {
+  return (this.next !== null);
+};
+
+/*
+ * Will return the node being pointed to if its not empty.
+ *
+ * @return the node that this node points to if not empty,
+ * otherwise null.
+ */
+Node.prototype.getNext = function() {
+  var n = null;
+  if (this.hasNext()) {
+    n = this.next;
+  }
+  return n;
+};
+
+/*
+ * Will change the value of the node and return the
+ * old value.
+ *
+ * @param {Object} newValue: the new value to be carried by the node.
+ * @return the old value of the node.
+ */
+Node.prototype.setValue = function(newValue) {
+  var oldValue = this.value;
+  this.value = newValue;
+  return oldValue;
+};
+
+/*
+ * Will update the node being pointed to and return the old one.
+ *
+ * @param {Node} node: the new node to point to.
+ * @return the old node.
+ */
+Node.prototype.setNext = function(newNext) {
+  var oldNext = this.next;
+  this.next = newNext;
+  return oldNext;
+};
+
+
+// SinglyLinkedList Implementation
+
 /*
  * Implementation of a Singly Linked List in Javascript.
  * Has a head node, as well as a size variable.
@@ -9,25 +83,22 @@ function SinglyLinkedList() {
   this.size = 0;
 }
 
-/*
- * Will add a value to the end of the linked list by
- * creating a node with the given value, and linking it
- * from the last node in the list.
+/**
+ * Returns a string representation of the SinglyLinkedList.
  *
- * @param {Object} value: the value to add to the list
+ * @return a string containing the values in the list
  */
-SinglyLinkedList.prototype.add = function(value) {
-  var node = new Node(value);
-  if (this.head === null) {
-    this.head = node;
-  } else {
-    var temp = this.head;
-    while (temp.hasNext()) {
-      temp = temp.getNext();
-    }
-    temp.setNext(node);
+SinglyLinkedList.prototype.toString = function() {
+  var node = this.head;
+  if (node === null) {
+    return '[]';
   }
-  this.size++;
+  var output = '[';
+  while (node.getNext() !== null) {
+    output += node.value + ', ';
+    node = node.getNext();
+  }
+  return output + node.getValue() + ']';
 };
 
 /*
@@ -71,6 +142,36 @@ SinglyLinkedList.prototype.get = function(index) {
 };
 
 /*
+ * Will return the length of the linked list.
+ *
+ * @return: the length of the linked list.
+ */
+SinglyLinkedList.prototype.length = function() {
+  return this.size;
+};
+
+/*
+ * Will add a value to the end of the linked list by
+ * creating a node with the given value, and linking it
+ * from the last node in the list.
+ *
+ * @param {*} value: the value to add to the list
+ */
+SinglyLinkedList.prototype.add = function(value) {
+  var node = new Node(value);
+  if (this.head === null) {
+    this.head = node;
+  } else {
+    var temp = this.head;
+    while (temp.hasNext()) {
+      temp = temp.getNext();
+    }
+    temp.setNext(node);
+  }
+  this.size++;
+};
+
+/*
  * Changes the value in a specific position in the list and
  * returns the old value.
  *
@@ -110,11 +211,26 @@ SinglyLinkedList.prototype.remove = function(index) {
   return oldValue;
 };
 
-/*
- * Will return the size of the linked list.
- *
- * @return: the size of the linked list.
- */
-SinglyLinkedList.prototype.size = function() {
-  return this.size;
-};
+
+// SinglyLinkedList Tester
+
+var singlyLinkedList = new SinglyLinkedList();
+console.log("SinglyLinkedList: " + singlyLinkedList.toString());
+
+singlyLinkedList.add(0);
+singlyLinkedList.add(1);
+singlyLinkedList.add(2);
+singlyLinkedList.add(3);
+singlyLinkedList.add(4);
+console.log("SinglyLinkedList: " + singlyLinkedList.toString()); // [0, 1, 2, 3, 4]
+
+console.log("Length of SinglyLinkedList: " + singlyLinkedList.length()); // 5
+console.log("First element of SinglyLinkedList: " + singlyLinkedList.get(0)); // 0
+console.log("Fourth element of SinglyLinkedList: " + singlyLinkedList.get(3)); // 3
+
+singlyLinkedList.remove(0); 
+console.log("SinglyLinkedList: " + singlyLinkedList.toString()); // [1, 2, 3, 4]
+singlyLinkedList.remove(2);
+console.log("SinglyLinkedList: " + singlyLinkedList.toString()); // [1, 2, 4]
+
+console.log("Length of SinglyLinkedList: " + singlyLinkedList.length()); // 3

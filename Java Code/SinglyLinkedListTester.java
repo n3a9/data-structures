@@ -30,7 +30,7 @@ public class SinglyLinkedListTester {
       System.out.print("Test get function at 3rd index\n");
       System.out.print("Base list value at 3rd index: " + base.get(2) + "\n");
       System.out.print("Your list value at 3rd index: " + test.get(2) + "\n");
-      if (test.get(2).equals(base.get(2))) {
+      if (!test.get(2).equals(base.get(2))) {
         throw new RuntimeException("Get function doesn't work.");
       }
 
@@ -58,9 +58,9 @@ public class SinglyLinkedListTester {
     // Check list sizes
     System.out.print("\nTesting list sizes.\n");
     System.out.print("Base list size: " + base.size() + "\n");
-    System.out.print("Your list size: " + test.size() + "\n\n");
-    if (test.size() != base.size()) {
-      throw new RuntimeException("Size is " + test.size() + " and should be " + base.size());
+    System.out.print("Your list size: " + test.length() + "\n\n");
+    if (test.length() != base.size()) {
+      throw new RuntimeException("Size is " + test.length() + " and should be " + base.size());
     }
   }
 

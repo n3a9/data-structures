@@ -17,12 +17,12 @@ public class SinglyLinkedList<E> {
     if (node == null) {
       return "[]";
     }
-    String s = "[";
+    String output = "[";
     while (node.getNext() != null) {
-      s += node.getValue() + ", ";
+      output += node.getValue() + ", ";
       node = node.getNext();
     }
-    return s + node.getValue() + "]";
+    return output + node.getValue() + "]";
   }
 
   /**
@@ -43,27 +43,6 @@ public class SinglyLinkedList<E> {
   public SinglyLinkedList(Node h) {
     this.head = h;
     this.size = 1;
-  }
-
-  /**
-   * Will add a value to the end of the linked list by
-   * creating a node with the given value, and linking it
-   * from the last node in the list.
-   *
-   * @param value the data to add to the list
-   */
-  public void add(E value) {
-    Node add = new Node(value);
-    if (this.head == null) {
-      this.head = add;
-    } else {
-      Node temp = this.head;
-      while (temp.hasNext()) {
-        temp = temp.getNext();
-      }
-      temp.setNext(add);
-    }
-    this.size += 1;
   }
 
   /**
@@ -105,6 +84,36 @@ public class SinglyLinkedList<E> {
     return (E) node.getValue();
   }
 
+   /**
+   * Will return the length of the linked list.
+   *
+   * @return the length of the linked list
+   */
+  public int length() {
+    return this.size;
+  }
+
+  /**
+   * Will add a value to the end of the linked list by
+   * creating a node with the given value, and linking it
+   * from the last node in the list.
+   *
+   * @param value the data to add to the list
+   */
+  public void add(E value) {
+    Node add = new Node(value);
+    if (this.head == null) {
+      this.head = add;
+    } else {
+      Node temp = this.head;
+      while (temp.hasNext()) {
+        temp = temp.getNext();
+      }
+      temp.setNext(add);
+    }
+    this.size += 1;
+  }
+
   /**
   * Changes the value in a specific position in the list and
   * returns the old value.
@@ -143,15 +152,6 @@ public class SinglyLinkedList<E> {
     }
     this.size--;
     return oldValue;
-  }
-
-  /**
-   * Will return the size of the linked list.
-   *
-   * @return the size of the linked list
-   */
-  public int size() {
-    return this.size;
   }
 
 }
