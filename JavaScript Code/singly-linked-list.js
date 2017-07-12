@@ -1,73 +1,13 @@
 // Node Implementation
 
 /*
- * Implementation of a node in Javascript. Carries
+ * Basic implementation of a node in Javascript. Carries
  * a value element, and points to another node.
- *
- * @constructor
- * @param {Object} value: the value element to be stored.
  */
 function Node(value) {
   this.value = value;
   this.next = null;
 }
-
-/*
- * Will return the value of the node.
- *
- * @return the value the node carries.
- */
-Node.prototype.getValue = function() {
-  return this.value;
-};
-
-/*
- * Will return if the node points to another node.
- *
- * @return true if it points to another node and false if not.
- */
-Node.prototype.hasNext = function() {
-  return (this.next !== null);
-};
-
-/*
- * Will return the node being pointed to if its not empty.
- *
- * @return the node that this node points to if not empty,
- * otherwise null.
- */
-Node.prototype.getNext = function() {
-  var n = null;
-  if (this.hasNext()) {
-    n = this.next;
-  }
-  return n;
-};
-
-/*
- * Will change the value of the node and return the
- * old value.
- *
- * @param {Object} newValue: the new value to be carried by the node.
- * @return the old value of the node.
- */
-Node.prototype.setValue = function(newValue) {
-  var oldValue = this.value;
-  this.value = newValue;
-  return oldValue;
-};
-
-/*
- * Will update the node being pointed to and return the old one.
- *
- * @param {Node} node: the new node to point to.
- * @return the old node.
- */
-Node.prototype.setNext = function(newNext) {
-  var oldNext = this.next;
-  this.next = newNext;
-  return oldNext;
-};
 
 
 // SinglyLinkedList Implementation
@@ -94,11 +34,11 @@ SinglyLinkedList.prototype.toString = function() {
     return '[]';
   }
   var output = '[';
-  while (node.getNext() !== null) {
+  while (node.next !== null) {
     output += node.value + ', ';
-    node = node.getNext();
+    node = node.next;
   }
-  return output + node.getValue() + ']';
+  return output + node.value + ']';
 };
 
 /*
@@ -117,7 +57,7 @@ SinglyLinkedList.prototype.getNode = function(index) {
     return null;
   }
   for (var i = 0; i < index; i++) {
-    node = node.getNext();
+    node = node.next;
   }
   return node;
 };
@@ -137,7 +77,7 @@ SinglyLinkedList.prototype.get = function(index) {
   if (node === null) {
     return null;
   } else {
-    return node.getValue();
+    return node.value;
   }
 };
 
@@ -163,10 +103,10 @@ SinglyLinkedList.prototype.add = function(value) {
     this.head = node;
   } else {
     var temp = this.head;
-    while (temp.hasNext()) {
-      temp = temp.getNext();
+    while (temp.next) {
+      temp = temp.next;
     }
-    temp.setNext(node);
+    temp.next = node;
   }
   this.size++;
 };
@@ -181,7 +121,7 @@ SinglyLinkedList.prototype.add = function(value) {
  */
 SinglyLinkedList.prototype.set = function(index, value) {
   var oldValue = this.get(index);
-  this.getNode(index).setValue(value);
+  this.getNode(index).value = value;
   return oldValue;
 };
 
@@ -201,11 +141,11 @@ SinglyLinkedList.prototype.set = function(index, value) {
 SinglyLinkedList.prototype.remove = function(index) {
   var oldValue = this.get(index);
   if (index === 0) { //first node
-    this.head = this.head.getNext();
+    this.head = this.head.next;
   } else if (index === this.size - 1) { //last node
-    this.getNode(index - 1).setNext(null);
+    this.getNode(index - 1).next = null;
   } else {
-    this.getNode(index - 1).setNext(this.getNode(index + 1));
+    this.getNode(index - 1).next = this.getNode(index + 1);
   }
   this.size--;
   return oldValue;
@@ -232,5 +172,10 @@ singlyLinkedList.remove(0);
 console.log("SinglyLinkedList: " + singlyLinkedList.toString()); // [1, 2, 3, 4]
 singlyLinkedList.remove(2);
 console.log("SinglyLinkedList: " + singlyLinkedList.toString()); // [1, 2, 4]
+
+singlyLinkedList.set(0, 2);
+console.log("SinglyLinkedList: " + singlyLinkedList.toString()); // [2, 2, 4]
+
+console.log(singlyLinkedList.get(2)); // 4
 
 console.log("Length of SinglyLinkedList: " + singlyLinkedList.length()); // 3

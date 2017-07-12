@@ -1,3 +1,19 @@
+// DoubleNode Implementation
+
+/*
+ * Basic implementation of a DoubleNode in Javascript. Carries
+ * a value element, and points to a next node and previous node.
+ */
+function DoubleNode(value) {
+  this.value = value;
+  this.next = null;
+  this.previous = null;
+}
+
+
+// DoublyLinkedList Implementation
+
+
 /*
  * Implementation of a Doubly Linked List in Javascript.
  * Has a head node, end node, as well as a size variable.
@@ -10,6 +26,24 @@ function DoublyLinkedList() {
   this.size = 0;
 }
 
+/**
+ * Returns a string representation of the DoublyLinkedList.
+ *
+ * @return a string containing the values in the list
+ */
+DoublyLinkedList.prototype.toString = function() {
+  var node = this.head;
+  if (node === null) {
+    return '[]';
+  }
+  var output = '[';
+  while (node.next !== null) {
+    output += node.value + ', ';
+    node = node.next;
+  }
+  return output + node.value + ']';
+};
+
 /*
  * Get the desired node, iterating from the first node.
  *
@@ -19,7 +53,7 @@ function DoublyLinkedList() {
 DoublyLinkedList.prototype.getNodeFromFirst = function(index) {
   var current = this.head;
   for (var i = 0; i < index; i++) {
-    current = current.getNext();
+    current = current.next;
   }
   return current;
 };
@@ -33,7 +67,7 @@ DoublyLinkedList.prototype.getNodeFromFirst = function(index) {
 DoublyLinkedList.prototype.getNodeFromLast = function(index) {
   var current = this.end;
   for (var i = this.size - 1; i > index; i--) {
-    current = current.getPrevious();
+    current = current.previous;
   }
   return current;
 };
@@ -47,9 +81,9 @@ DoublyLinkedList.prototype.getNodeFromLast = function(index) {
  */
 DoublyLinkedList.prototype.getNode = function(index) {
   if (index > this.size / 2) {
-    return getNodeFromLast(index);
+    return this.getNodeFromLast(index);
   }
-  return getNodeFromFirst(index);
+  return this.getNodeFromFirst(index);
 };
 
 /*
@@ -59,7 +93,7 @@ DoublyLinkedList.prototype.getNode = function(index) {
  * @return: the value of the node.
  */
 DoublyLinkedList.prototype.get = function(index) {
-  return getNode(index).getValue();
+  return this.getNode(index).value;
 };
 
 /*
@@ -69,7 +103,7 @@ DoublyLinkedList.prototype.get = function(index) {
  */
 DoublyLinkedList.prototype.getFirst = function() {
   if (this.head !== null) {
-    return this.head.getValue();
+    return this.head.value;
   }
   return null;
 };
@@ -81,9 +115,18 @@ DoublyLinkedList.prototype.getFirst = function() {
  */
 DoublyLinkedList.prototype.getLast = function() {
   if (this.end !== null) {
-    return end.getValue();
+    return end.value;
   }
   return null;
+};
+
+/*
+ * Return the length of the list.
+ *
+ * @return: the length of the list.
+ */
+DoublyLinkedList.prototype.length = function() {
+  return this.size;
 };
 
 /*
@@ -95,60 +138,62 @@ DoublyLinkedList.prototype.getLast = function() {
  * @return: the old value.
  */
 DoublyLinkedList.prototype.set = function(index, newValue) {
-  var oldValue = get(index);
-  getNode(index).setValue(newValue);
+  var oldValue = this.get(index);
+  this.getNode(index).value = newValue;
   return oldValue;
 };
 
 /*
- * adds the value to the end of the linked list.
+ * Will add the value to the DoublyLinkedList. If index is given to be null, the value will
+ * be added at the end of the list. Otherwise, it will be added at index.
  *
+ * index is null:
  * @postcondition: the value will be added to the linked list, and the size will increase
  * by one.
  * @param {Object} value: the value to be added to the end of the list.
- */
-DoublyLinkedList.prototype.add = function(val) {
-  var newNode = new DoubleNode(value);
-  if (this.size === 0) {
-    this.head = newNode;
-  } else if (this.size === 1) {
-    this.end = newNode;
-    head.setNext(this.end);
-    end.setPrevious(this.head);
-  } else {
-    end.setNext(newNode);
-    newNode.setPrevious(end);
-    this.end = newNode;
-  }
-  this.size++;
-};
-
-/*
+ * 
+ * index is given:
  * Add the value at the selected index and shift all following nodes to the right.
  *
  * @precondition: 0 <= index < size
  * @postcondition: all nodes after the index will be shifted to the right and the size
  * of the list will increase by one
  * @param {integer} index: the index at which to insert the value
- * @param {Object} value: the value to be inserted into the list
+ * @param {Object} value: the value to be inserted into the list 
  */
-DoublyLinkedList.prototype.add = function(index, value) {
-  var newNode = new DoubleNode(value);
-  var oldNode = getNode(index);
-  if (index === 0) {
-    if (this.head !== null) {
-      head.setPrevious(newNode);
+DoublyLinkedList.prototype.add = function(value, index) {
+  
+  if (index === null) {
+    var newNode = new DoubleNode(value);
+    if (this.size === 0) {
+      this.head = newNode;
+    } else if (this.size === 1) {
+      this.end = newNode;
+      this.head.next = this.end;
+      this.end.previous = this.head;
+    } else {
+      this.end.next = newNode;
+      newNode.previous = this.end;
+      this.end = newNode;
     }
-    newNode.setNext(head);
-    this.head = newNode;
   } else {
-    newNode.setPrevious(oldNode.getPrevious());
-    newNode.getPrevious().setNext(newNode);
-    oldNode.setPrevious(newNode);
-    newNode.setNext(oldNode);
-  }
-  if (size === 1) {
-    end = head.getNext();
+    var newNode = new DoubleNode(value);
+    var oldNode = this.getNode(index);
+    if (index === 0) {
+      if (this.head !== null) {
+        head.previous = newNode;
+      }
+      newNode.next = this.head;
+      this.head = newNode;
+    } else {
+      newNode.previous = oldNode.previous;
+      newNode.previous.next = newNode;
+      oldNode.previous = newNode;
+      newNode.next = oldNode;
+    }
+    if (this.size === 1) {
+      end = head.next;
+    }
   }
   this.size++;
 };
@@ -166,11 +211,11 @@ DoublyLinkedList.prototype.addFirst = function(value) {
   } else if (size === 1) {
     this.end = this.head;
     this.head = newNode;
-    head.setNext(this.end);
-    end.setPrevious(this.head);
+    head.next = this.end;
+    end.previus = this.head;
   } else {
-    newNode.setNext(this.head);
-    head.setPrevious(newNode);
+    newNode.next = this.head;
+    head.previous = newNode;
     this.head = newNode;
   }
   this.size++;
@@ -197,26 +242,26 @@ DoublyLinkedList.prototype.addLast = function(value) {
  * @return: the previous value at the index.
  */
 DoublyLinkedList.prototype.remove = function(index) {
-  var oldValue = get(index);
-  var oldNode = getNode(index);
+  var oldValue = this.get(index);
+  var oldNode = this.getNode(index);
   var node;
   if (index === 0) {
-    node = head.getNext();
+    node = this.head.next;
     if (node !== null) {
-      node.setPrevious(null);
-      head.setNext(null);
+      node.previous = null;
+      this.head.next = null;
     }
     this.head = node;
-  } else if (index === size - 1) {
-    node = end.getPrevious();
-    node.setNext(null);
-    end.setPrevious(null);
+  } else if (index === this.size - 1) {
+    node = end.previous;
+    node.next = null;
+    this.end.previous = nulll;
     this.end = node;
   } else {
-    var previousNode = oldNode.getPrevious();
-    var nextNode = oldNode.getNext();
-    previousNode.setNext(nextNode);
-    nextNode.setPrevious(previousNode);
+    var previousNode = oldNode.previous;
+    var nextNode = oldNode.next;
+    previousNode.next = nextNode;
+    nextNode.previous = previousNode;
   }
   this.size--;
   return oldValue;
@@ -244,11 +289,33 @@ DoublyLinkedList.prototype.removeLast = function() {
   return remove(this.size - 1);
 };
 
-/*
- * Return the size of the list.
- *
- * @return: the size of the list.
- */
-DoublyLinkedList.prototype.size = function() {
-  return this.size;
-};
+
+// DoublyLinkedList Tester
+
+var doublyLinkedList = new DoublyLinkedList();
+console.log("DoublyLinkedList: " + doublyLinkedList.toString());
+
+doublyLinkedList.add(0, null);
+doublyLinkedList.add(1, null);
+doublyLinkedList.add(2, null);
+doublyLinkedList.add(3, null);
+doublyLinkedList.add(4, null);
+console.log("DoublyLinkedList: " + doublyLinkedList.toString()); // [0, 1, 2, 3, 4]
+
+console.log("Length of DoublyLinkedList: " + doublyLinkedList.length()); // 5
+// Test getNodeFromFirst
+console.log("Second element of DoublyLinkedList: " + doublyLinkedList.get(1)); // 1
+// Test getNodeFromLast
+console.log("Fourth element of DoublyLinkedList: " + doublyLinkedList.get(3)); // 3
+
+doublyLinkedList.remove(0); 
+console.log("DoublyLinkedList: " + doublyLinkedList.toString()); // [1, 2, 3, 4]
+doublyLinkedList.remove(2);
+console.log("DoublyLinkedList: " + doublyLinkedList.toString()); // [1, 2, 4]
+
+doublyLinkedList.set(0, 2);
+console.log("DoublyLinkedList: " + doublyLinkedList.toString()); // [2, 2, 4]
+
+console.log(doublyLinkedList.get(2)); // 4
+
+console.log("Length of DoublyLinkedList: " + doublyLinkedList.length()); // 3
