@@ -1,4 +1,4 @@
-# Data Structures Walkthrough
+# data-structures
 
 A full implementation of data structures in both Java and Javascript, along with tutorials.
 
