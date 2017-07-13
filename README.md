@@ -34,6 +34,8 @@ In terms of [Javadoc](http://www.oracle.com/technetwork/articles/java/index-1378
 
 ## Javascript ![codestyle badge](https://img.shields.io/badge/codestyle-google-blue.svg)
 
+Documentation follows the standards of [@use JSDoc](http://usejsdoc.org/tags-returns.html). The code includes `@precondition`, `@postconditions`, and `@param` tags for extra clarity and definition of methods, although not officially supported by @use JSDoc. `@precondition` and `@postconditions` both are in front of `@param` in terms of order, respectively.
+
 ### Current Data Structures
 
 - [x] Node

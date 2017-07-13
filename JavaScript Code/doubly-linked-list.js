@@ -1,6 +1,6 @@
 // DoubleNode Implementation
 
-/*
+/**
  * Basic implementation of a DoubleNode in Javascript. Carries
  * a value element, and points to a next node and previous node.
  */
@@ -14,7 +14,7 @@ function DoubleNode(value) {
 // DoublyLinkedList Implementation
 
 
-/*
+/**
  * Implementation of a Doubly Linked List in Javascript.
  * Has a head node, end node, as well as a size variable.
  *
@@ -29,7 +29,7 @@ function DoublyLinkedList() {
 /**
  * Returns a string representation of the DoublyLinkedList.
  *
- * @return a string containing the values in the list
+ * @return {String} a string containing the values in the list
  */
 DoublyLinkedList.prototype.toString = function() {
   var node = this.head;
@@ -44,11 +44,11 @@ DoublyLinkedList.prototype.toString = function() {
   return output + node.value + ']';
 };
 
-/*
+/**
  * Get the desired node, iterating from the first node.
  *
- * @param {integer} index: the index of the node to get.
- * @return: the node at the given index.
+ * @param {Number} index - the index of the node to get
+ * @return {DoubleNode} the node at the given index
  */
 DoublyLinkedList.prototype.getNodeFromFirst = function(index) {
   var current = this.head;
@@ -58,11 +58,11 @@ DoublyLinkedList.prototype.getNodeFromFirst = function(index) {
   return current;
 };
 
-/*
+/**
  * Get the desired node, iterating from the last node.
  *
- * @param {integer} index: the index of the node to get.
- * @return: the node at the given index.
+ * @param {Number} index - the index of the node to get
+ * @return {DoubleNode} the node at the given index
  */
 DoublyLinkedList.prototype.getNodeFromLast = function(index) {
   var current = this.end;
@@ -72,12 +72,12 @@ DoublyLinkedList.prototype.getNodeFromLast = function(index) {
   return current;
 };
 
-/*
+/**
  * Get node at index in the list. based on the placement, it will
  * iterate from the front or the back of the list to retrieve the value.
  *
- * @param {integer} index: the index of the node to get.
- * @return: the node at the specific index.
+ * @param {Number} index - the index of the node to get
+ * @return {DoubleNode} the node at the specific index
  */
 DoublyLinkedList.prototype.getNode = function(index) {
   if (index > this.size / 2) {
@@ -86,20 +86,20 @@ DoublyLinkedList.prototype.getNode = function(index) {
   return this.getNodeFromFirst(index);
 };
 
-/*
+/**
  * Retrieves the value of the node at the index.
  *
- * @param {integer} index: the index of which to retrieve the value.
- * @return: the value of the node.
+ * @param {Number} index - the index of which to retrieve the value
+ * @return {*} the value of the node
  */
 DoublyLinkedList.prototype.get = function(index) {
   return this.getNode(index).value;
 };
 
-/*
+/**
  * Will retrieve the first value in the list.
  *
- * @return: the first value in the list, or null if the list is empty.
+ * @return {*} the first value in the list, or null if the list is empty
  */
 DoublyLinkedList.prototype.getFirst = function() {
   if (this.head !== null) {
@@ -108,10 +108,10 @@ DoublyLinkedList.prototype.getFirst = function() {
   return null;
 };
 
-/*
+/**
  * Will retrieve the last value in the list.
  *
- * @return: the last value in the list, or null if the list is empty.
+ * @return {*} the last value in the list, or null if the list is empty
  */
 DoublyLinkedList.prototype.getLast = function() {
   if (this.end !== null) {
@@ -120,22 +120,22 @@ DoublyLinkedList.prototype.getLast = function() {
   return null;
 };
 
-/*
+/**
  * Return the length of the list.
  *
- * @return: the length of the list.
+ * @return {Number} the length of the list
  */
 DoublyLinkedList.prototype.length = function() {
   return this.size;
 };
 
-/*
+/**
  * Set the value of the node at the specified index, returning
  * the old value at that index.
  *
- * @param {integer} index: the index of which to set the value.
- * @param {Object} newValue: the new value to be set.
- * @return: the old value.
+ * @param {Number} index - the index of which to set the value
+ * @param {*} newValue - the new value to be set
+ * @return {*} the old value.
  */
 DoublyLinkedList.prototype.set = function(index, newValue) {
   var oldValue = this.get(index);
@@ -143,23 +143,23 @@ DoublyLinkedList.prototype.set = function(index, newValue) {
   return oldValue;
 };
 
-/*
+/**
  * Will add the value to the DoublyLinkedList. If index is given to be null, the value will
  * be added at the end of the list. Otherwise, it will be added at index.
  *
  * index is null:
- * @postcondition: the value will be added to the linked list, and the size will increase
+ * @postcondition the value will be added to the linked list, and the size will increase
  * by one.
- * @param {Object} value: the value to be added to the end of the list.
  * 
  * index is given:
  * Add the value at the selected index and shift all following nodes to the right.
- *
- * @precondition: 0 <= index < size
- * @postcondition: all nodes after the index will be shifted to the right and the size
+ * @precondition 0 <= index < size
+ * @postcondition all nodes after the index will be shifted to the right and the size
  * of the list will increase by one
- * @param {integer} index: the index at which to insert the value
- * @param {Object} value: the value to be inserted into the list 
+ * 
+ * @param {*} value - the value to be inserted into the list 
+ * @param {Number|null} index - the index for the value to be added at. if null, the value will be added
+ * at the end of the list. read documentation above for detailed description
  */
 DoublyLinkedList.prototype.add = function(value, index) {
   
@@ -198,12 +198,12 @@ DoublyLinkedList.prototype.add = function(value, index) {
   this.size++;
 };
 
-/*
+/**
  * Inserts a new value at the front of the list.
  *
- * @postcondition: the private variable head will now point to a node consisting
- * of the passed value, and the size will increase by one.
- * @param {Object} value: the value to be inserted at the front of the list
+ * @postcondition the private variable head will now point to a node consisting
+ * of the passed value, and the size will increase by one
+ * @param {*} value - the value to be inserted at the front of the list
  */
 DoublyLinkedList.prototype.addFirst = function(value) {
   if (size === 0) {
@@ -221,25 +221,25 @@ DoublyLinkedList.prototype.addFirst = function(value) {
   this.size++;
 };
 
-/*
+/**
  * Will add a value to the end of the linked list
  *
- * @postcondition: the private variable end will now point to a node consisting
- * of the passed value, and the size will increase by one.
- * @param {Object} value: the value to be added to the end of the list.
+ * @postcondition the private variable end will now point to a node consisting
+ * of the passed value, and the size will increase by one
+ * @param {*} value - the value to be added to the end of the list
  */
 DoublyLinkedList.prototype.addLast = function(value) {
   add(value);
 };
 
-/*
+/**
  * Removes value at the given index of the list and returns it.
  *
- * @precondition: 0 <= index < size
- * @postcondition: node at index will be removed from the list and the pointers
- * will be reset to link the list, and the size will be reduced by one.
- * @param {integer} index: the index of the element to remove.
- * @return: the previous value at the index.
+ * @precondition 0 <= index < size
+ * @postcondition node at index will be removed from the list and the pointers
+ * will be reset to link the list, and the size will be reduced by one
+ * @param {Number} index - the index of the element to remove
+ * @return {*} the previous value at the index
  */
 DoublyLinkedList.prototype.remove = function(index) {
   var oldValue = this.get(index);
@@ -267,23 +267,23 @@ DoublyLinkedList.prototype.remove = function(index) {
   return oldValue;
 };
 
-/*
- * Remove the first element the list.
+/**
+ * Remove the first value the list.
  *
- * @postcondition: the first value of the list will be removed and all the following
- * values will be shifted left, and the size of the list will decrese by one.
- * @return: the old first element in the list.
+ * @postcondition the first value of the list will be removed and all the following
+ * values will be shifted left, and the size of the list will decrese by one
+ * @return {*} the old first value in the list
  */
 DoublyLinkedList.prototype.removeFirst = function() {
   return remove(0);
 };
 
-/*
- * Remove the last element the list.
+/**
+ * Remove the last value the list.
  *
- * @postcondition: the last value of the list will be removed and the size of the list
+ * @postcondition the last value of the list will be removed and the size of the list
  * will decrease by one
- * @return: the old last element in the list.
+ * @return {*} the old last value in the list
  */
 DoublyLinkedList.prototype.removeLast = function() {
   return remove(this.size - 1);

@@ -1,8 +1,10 @@
 // Node Implementation
 
-/*
+/**
  * Basic implementation of a node in Javascript. Carries
  * a value element, and points to another node.
+ * 
+ * @param {*} value - the value to be carried by the node
  */
 function Node(value) {
   this.value = value;
@@ -12,7 +14,7 @@ function Node(value) {
 
 // SinglyLinkedList Implementation
 
-/*
+/**
  * Implementation of a Singly Linked List in Javascript.
  * Has a head node, as well as a size variable.
  *
@@ -26,7 +28,7 @@ function SinglyLinkedList() {
 /**
  * Returns a string representation of the SinglyLinkedList.
  *
- * @return a string containing the values in the list
+ * @return {String} a string containing the values in the list
  */
 SinglyLinkedList.prototype.toString = function() {
   var node = this.head;
@@ -41,14 +43,14 @@ SinglyLinkedList.prototype.toString = function() {
   return output + node.value + ']';
 };
 
-/*
+/**
  * Will get the node at the respective index in the list.
  * If position does not exist, will return null.
  * Simply iterates through the nodes in the list the given
  * number of times and will return the node at that position.
  *
- * @param {integer} index: the index of the node to retrieve in the list
- * @return: the node at the given position in the list, or null
+ * @param {Number} index - the index of the node to retrieve in the list
+ * @return {Node} the node at the given position in the list, or null
  * if it doesn't exist
  */
 SinglyLinkedList.prototype.getNode = function(index) {
@@ -62,15 +64,15 @@ SinglyLinkedList.prototype.getNode = function(index) {
   return node;
 };
 
-/*
+/**
  * Retrieves the value at the respective index in the list.
  * Simply calls getNode to retrieve the node at that position,
  * and returns the value of the node. If position doesn't
  * exist, then it will return null.
  *
- * @param {integer} index: the index of the value to retrieve in the list.
- * @return: the respective value in the list, or null if the position
- * doesn't exist.
+ * @param {Number} index - the index of the value to retrieve in the list
+ * @return {*} the respective value in the list, or null if the position
+ * doesn't exist
  */
 SinglyLinkedList.prototype.get = function(index) {
   var node = this.getNode(index);
@@ -81,21 +83,21 @@ SinglyLinkedList.prototype.get = function(index) {
   }
 };
 
-/*
+/**
  * Will return the length of the linked list.
  *
- * @return: the length of the linked list.
+ * @return {Number} the length of the linked list
  */
 SinglyLinkedList.prototype.length = function() {
   return this.size;
 };
 
-/*
+/**
  * Will add a value to the end of the linked list by
  * creating a node with the given value, and linking it
  * from the last node in the list.
  *
- * @param {*} value: the value to add to the list
+ * @param {*} value - the value to add to the list
  */
 SinglyLinkedList.prototype.add = function(value) {
   var node = new Node(value);
@@ -111,13 +113,13 @@ SinglyLinkedList.prototype.add = function(value) {
   this.size++;
 };
 
-/*
+/**
  * Changes the value in a specific position in the list and
  * returns the old value.
  *
- * @param {integer} index: the index of the value to change in the list.
- * @param {Object} value: the new value to replace the old value
- * @return: the old value in the position.
+ * @param {Number} index - the index of the value to change in the list
+ * @param {*} value - the new value to replace the old value
+ * @return {*} the old value in the position
  */
 SinglyLinkedList.prototype.set = function(index, value) {
   var oldValue = this.get(index);
@@ -125,7 +127,7 @@ SinglyLinkedList.prototype.set = function(index, value) {
   return oldValue;
 };
 
-/*
+/**
  * Will remove a value from the list at the respective position.
  * First, it will check if the value being removed is the first.
  * If it is, then the head will be set to the next value being pointed
@@ -135,8 +137,8 @@ SinglyLinkedList.prototype.set = function(index, value) {
  * If not, then the previous node's next value will be set to the node
  * after the one being removed.
  *
- * @param {integer} index: the index of the value being removed
- * @return: the old value at that index
+ * @param {Number} index - the index of the value being removed
+ * @return {*} the old value at that index
  */
 SinglyLinkedList.prototype.remove = function(index) {
   var oldValue = this.get(index);

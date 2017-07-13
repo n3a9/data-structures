@@ -13,7 +13,7 @@
 function BinarySearchTreeUtilities() {
 }
 
-/*
+/**
  * findNode recursively goes through the BST to find the tree node with the given value x.
  * The first thing that it checks is if the current node is null, in which case the given value
  * does not exist in the tree.
@@ -22,9 +22,9 @@ function BinarySearchTreeUtilities() {
  *   if greater than 0: searches nodes on the right side
  *   if less than 0: searches nodes on the left side
  *
- * @param t the tree that will be searched for the value
- * @param x the value to be searched for in the tree
- * @return the node containing x, or null if the value is not in the tree
+ * @param {TreeNode} t - the tree that will be searched for the value
+ * @param {*} x - the value to be searched for in the tree
+ * @return {TreeNode} the node containing x, or null if the value is not in the tree
  */
 BinarySearchTreeUtilities.findNode = function(t, x) {
   if (t === null) {
@@ -40,25 +40,25 @@ BinarySearchTreeUtilities.findNode = function(t, x) {
   }
 };
 
-/*
+/**
  * Uses the findNode(t, x) method to determine whether x is in the tree by checking
  * if the return value is null.
  *
- * @param t the tree that will be searched for the value
- * @param x the value to be searched for in the tree
- * @return false if findNode returns null, otherwise true
+ * @param {TreeNode} t - the tree that will be searched for the value
+ * @param {*} x - the value to be searched for in the tree
+ * @return {Boolean} false if findNode returns null, otherwise true
  */
 BinarySearchTreeUtilities.contains = function(t, x) {
   return (findNode(t, x) !== null);
 };
 
-/*
+/**
  * If x is not already present in the tree, then it adds it into the correct place to
  * maintain the properties of a BST. Then returns the tree.
  *
- * @param t the tree of which the given value will be added if not present already
- * @param x the value to be added to the tree
- * @return the tree with the value x in the correct position if it not present already
+ * @param {TreeNode} t - the tree of which the given value will be added if not present already
+ * @param {*} x - the value to be added to the tree
+ * @return {TreeNode} the tree with the value x in the correct position if it not present already
  */
 BinarySearchTreeUtilities.insert = function(t, x) {
   if (!contains(t, x)) {
@@ -91,7 +91,7 @@ BinarySearchTreeUtilities.insert = function(t, x) {
   return t;
 };
 
-/*
+/**
  * A helper method for delete(t, x) that will delete the current node from the given tree
  * and reassembles the tree so that it maintains the properties of a BST and all nodes aside from
  * the root stay intact. There are three cases to consider:
@@ -101,12 +101,13 @@ BinarySearchTreeUtilities.insert = function(t, x) {
  *   Case 3: t's successor isn't the right child, so the successor will be found and its value will
  *           be swapped with t. Then, the successor will be cut of out the tree.
  *
- * @precondition t is not null
- * @param t the node that will be deleted from the tree
- * @return a pointer to the resulting tree once the root has been removed
+ * @param {TreeNode} t - the node that will be deleted from the tree
+ * @return {TreeNode} the resulting tree once the root has been removed, or null if t is null
  */
 BinarySearchTreeUtilities.deleteNode = function(t) {
-  var successor;
+  if (t === null)
+    return null;
+  var successor = null;
   if (t.getRight() === null) {
     // Case 1: No successor
     successor = null;
@@ -130,13 +131,14 @@ BinarySearchTreeUtilities.deleteNode = function(t) {
   return t;
 };
 
-/*
+/**
  * A method to find the node in the tree that contains the value x, and calls deleteNode(t) to
  * delete the node from the tree and maintain the properties of a BST.
  *
- * @param t the BST in which the given value will be deleted
- * @param x the value to be deleted
- * @return if the tree was already null: returns null
+ * @param {TreeNode} t - the BST in which the given value will be deleted
+ * @param {*} x - the value to be deleted
+ * @return {TreeNode}
+ *         if the tree was already null: returns null
  *         if the tree did not contain x: returns the previous tree
  *         else returns the BST with the TreeNode at x removed
  */
