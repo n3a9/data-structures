@@ -11,6 +11,9 @@ function MapEntry(k, v) {
   this.value = v;
 }
 
+
+// TreeMap Implementation
+
 /**
  * This class is a TreeMap implementation in Javascript.
  * 

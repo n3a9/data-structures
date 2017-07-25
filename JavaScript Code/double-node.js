@@ -5,7 +5,7 @@
  * @constructor
  * @param {*} value - the value element to be stored
  */
-function Node(value) {
+function DoubleNode(value) {
   this.value = value;
   this.next = null;
   this.previous = null;
@@ -16,7 +16,7 @@ function Node(value) {
  *
  * @return {*} the value the node carries
  */
-Node.prototype.getValue = function() {
+DoubleNode.prototype.getValue = function() {
   return this.value;
 };
 
@@ -27,7 +27,7 @@ Node.prototype.getValue = function() {
  * @param {*} newValue - the new value to be carried by the node
  * @return {*} the old value of the node
  */
-Node.prototype.setValue = function(newValue) {
+DoubleNode.prototype.setValue = function(newValue) {
   var oldValue = this.value;
   this.value = newValue;
   return oldValue;
@@ -38,7 +38,7 @@ Node.prototype.setValue = function(newValue) {
  *
  * @return {Boolean} true if it points to a next node, false otherwise
  */
-Node.prototype.hasNext = function() {
+DoubleNode.prototype.hasNext = function() {
   return (this.next !== null);
 };
 
@@ -47,7 +47,7 @@ Node.prototype.hasNext = function() {
  *
  * @return {Boolean} true if it points to a previous node, otherwise false
  */
-Node.prototype.hasPrevious = function() {
+DoubleNode.prototype.hasPrevious = function() {
   return (this.previous !== null);
 };
 
@@ -57,7 +57,7 @@ Node.prototype.hasPrevious = function() {
  * @return {DoubleNode} the node that this node points to if not empty,
  * otherwise null
  */
-Node.prototype.getNext = function() {
+DoubleNode.prototype.getNext = function() {
   var n = null;
   if (this.hasNext()) {
     n = this.next;
@@ -71,7 +71,7 @@ Node.prototype.getNext = function() {
  * @return {DoubleNode} the previous node that this node points to if not empty,
  * otherwise null
  */
-Node.prototype.getNext = function() {
+DoubleNode.prototype.getPrevious = function() {
   var n = null;
   if (this.hasPrevious()) {
     n = this.previous;
@@ -85,7 +85,7 @@ Node.prototype.getNext = function() {
  * @param {DoubleNode} node - the new node to point to
  * @return {DoubleNode} the old node that was previously pointed to
  */
-Node.prototype.setNext = function(newNext) {
+DoubleNode.prototype.setNext = function(newNext) {
   var oldNext = this.next;
   this.next = newNext;
   return oldNext;
@@ -98,7 +98,7 @@ Node.prototype.setNext = function(newNext) {
  * @param {DoubleNode} node - the new previous node to point to
  * @return {DoubleNode} the old node that was previously pointed to as previous
  */
-Node.prototype.setNext = function(newPrevious) {
+DoubleNode.prototype.setPrevious = function(newPrevious) {
   var oldPrevious = this.previous;
   this.previous = newPrevious;
   return oldPrevious;

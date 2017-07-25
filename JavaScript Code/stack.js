@@ -69,3 +69,19 @@ Stack.prototype.isEmpty = function() {
 Stack.prototype.clear = function() {
   this.data = [];
 };
+
+/**
+ * Will retrun a string containing all the elements of the stack.
+ * 
+ * @return {String} containing all the elements in the stack
+ */
+Stack.prototype.toString = function() {
+    return this.elements.join(' ');
+};
+
+/**
+ * Will print the string represetnation of the stack.
+ */
+Stack.prototype.print = function() {
+    console.log(this.toString());
+};
